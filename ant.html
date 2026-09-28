@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliPlag - Web Engine</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 850px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin-bottom: 8px; color: #34495e; }
+        input[type="file"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; background-color: #3498db; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #2980b9; }
+        .results-section { margin-top: 30px; display: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .high { color: #e74c3c; font-weight: bold; }
+        .moderate { color: #e67e22; font-weight: bold; }
+        .low { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>IntelliPlag Detection Engine</h1>
+    
+    <div class="form-group">
+        <label>Step 1: Select Target File (.txt)</label>
+        <input type="file" id="targetFile" accept=".txt">
+    </div>
+
+    <div class="form-group">
+        <label>Step 2: Select Library Folder or Multiple Files (.txt)</label>
+        <input type="file" id="libraryFiles" accept=".txt" multiple webkitdirectory>
+    </div>
+
+    <button onclick="runPlagiarismCheck()">Run Similarity Check</button>
+
+    <div class="results-section" id="resultsSection">
+        <h2>Comparison Report</h2>
+        <p><strong>Target File:</strong> <span id="targetName"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Library Document</th>
+                    <th>Similarity Score</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="resultsTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
